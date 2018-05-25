@@ -4,7 +4,7 @@ This demo and these configurations are written to be used with the [cldemo-vagra
 
 The configuration files in this repository will be placed on the appropriate devices in order to set up the desired Routing Protocol between the leafs and spines, and will configure a Layer 2 bridge on each leaf top-of-rack switch for the servers in that rack.
 
-This Github repository contains the configuration files necessary for setting up Layer 3 routing on a [CLOS topology](http://www.networkworld.com/article/2226122/cisco-subnet/clos-networks--what-s-old-is-new-again.html) using Cumulus Linux and Quagga.
+This Github repository contains the configuration files necessary for setting up Layer 3 routing on a [CLOS topology](http://www.networkworld.com/article/2226122/cisco-subnet/clos-networks--what-s-old-is-new-again.html) using Cumulus Linux and FRRouting.
 
 A helper script named `push-config.py` will quickly deploy the flat configuration files to the devices in the network, but you could just as easily copy and paste them by hand or incorporate them into an automation tool like Ansible instead.
 
