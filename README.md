@@ -6,11 +6,12 @@ The configuration files in this repository will be placed on the appropriate dev
 
 This Github repository contains the configuration files necessary for setting up Layer 3 routing on a [CLOS topology](http://www.networkworld.com/article/2226122/cisco-subnet/clos-networks--what-s-old-is-new-again.html) using Cumulus Linux and FRRouting.
 
-A helper script named `push-config.py` will quickly deploy the flat configuration files to the devices in the network, but you could just as easily copy and paste them by hand or incorporate them into an automation tool like Ansible instead.
+Ansible is used to quickly deploy configuration from the OOB server to devices on the network.
 
 Topology
 --------
-This demo runs on a spine-leaf topology with two single-attached hosts. The helper script `push-config.py` requires an out-of-band management network that provides access to eth0 on all of the in-band devices.
+This demo runs on a spine-leaf topology with two single-attached hosts. 
+The helper out-of-band management network  provides access to eth0 on all of the in-band devices.
 
          +------------+       +------------+
          | spine01    |       | spine02    |
@@ -73,19 +74,16 @@ Use SSH to login to the out-of-band management server.
 
     vagrant ssh oob-mgmt-server
 
-Login to the "cumulus" user
-
-    sudo su - cumulus
-
 ### 5). Download the Routing Configurations
 
     git clone https://github.com/cumulusnetworks/cldemo-config-routing
     cd cldemo-config-routing
 
 ### 6). Push Configuration Files to Devices
-After setting up the repo, you can now use `push-config.py` This script will log in to each device, download the configuration files, and reboot the device. [Click to learn more about the operation of the script](https://github.com/CumulusNetworks/cldemo-config-routing#using-the-helper-script)
 
-Note the keyword "bgp-unnumbered" in the command below; this can be replaced with whatever example configuration you would like to deploy (such as "ospf-unnumbered" or "ospf-numbered" ).
+ansible-playbook bgp-unnumbered.yml
+
+Note the keyword "bgp-unnumbered" in the command; this can be replaced with whatever example configuration you would like to deploy (such as "ospf-unnumbered" or "ospf-numbered" ).
 
  * OSPF Numbered --> "ospf-numbered"
  * OSPF Unnumbered --> "ospf-unnumbered"
@@ -96,9 +94,6 @@ Note the keyword "bgp-unnumbered" in the command below; this can be replaced wit
  * BGP Numbered with IPv6 --> "bgp-numbered-ipv6"
  * BGP Unnumbered with IPv6 --> "bgp-unnumbered-ipv6"
 
-```
-    ansible-playbook deploy-bgp-unnumbered.yml
-```
 
 ### 7). Experiment
 Login to server01 and ping server02.
