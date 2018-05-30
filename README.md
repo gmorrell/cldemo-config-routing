@@ -50,7 +50,7 @@ Eight different configuration examples are included:
 
 ### 1). Install Prerequisites
 
-Go to the [prequisites list](https://github.com/CumulusNetworks/cldemo-vagrant#prerequisites) associated with the reference topology to download an install the required software.
+Go to the [prequisites list](https://github.com/CumulusNetworks/cldemo-vagrant#prerequisites-and-getting-started) associated with the reference topology to download an install the required software.
 
 ### 2). Clone or Download the Reference Topology
 
